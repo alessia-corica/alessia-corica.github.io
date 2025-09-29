@@ -1,52 +1,126 @@
+/* General */
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px auto;
-  max-width: 900px;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
   line-height: 1.6;
   background: #fafafa;
   color: #333;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 40px;
+/* Containers */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-header h1 {
-  margin: 0;
+/* Header */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #222;
 }
 
 nav a {
-  margin: 0 10px;
+  margin-left: 1.2rem;
   text-decoration: none;
-  color: #0366d6;
+  font-weight: 600;
+  color: #0073e6;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
-footer {
+/* Hero Section */
+.hero {
+  padding: 4rem 0;
   text-align: center;
-  margin-top: 40px;
-  font-size: 0.9em;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.buttons {
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  margin: 0.3rem;
+  border-radius: 6px;
+  background: #0073e6;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #005bb5;
+}
+
+.btn.secondary {
+  background: #e6e6e6;
+  color: #333;
+}
+
+.btn.secondary:hover {
+  background: #ccc;
+}
+
+/* About Section */
+.about {
+  padding: 3rem 0;
+}
+
+.about h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #eee;
   color: #777;
+  font-size: 0.9rem;
 }
 
-/* --- Gallery style --- */
-.gallery {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+/* Optional: Dark mode (auto) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1c1c1c;
+    color: #ddd;
+  }
+  .site-header, .site-footer {
+    background: #222;
+    border-color: #444;
+  }
+  nav a { color: #66aaff; }
+  .btn.secondary { background: #444; color: #ddd; }
 }
 
-.gallery img {
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
