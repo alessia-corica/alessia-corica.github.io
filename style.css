@@ -63,63 +63,107 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 @media (prefers-color-scheme: dark){
   .btn.secondary{ background:#2a2f3a; color:var(--brand); }
 }
+.btn:focus-visible{ outline:3px solid #9fc1ff; outline-offset:2px; }
 
+/* ===========================
+   NAVBAR (hamburger senza JS)
+   =========================== */
 
-/* --- Pannello menu (mobile) --- */
+/* il wrapper di nav fa da riferimento per il menu in posizione assoluta */
+.container.nav{ position:relative; }
+
+/* barra superiore */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:saturate(180%) blur(8px);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.8rem 0;
+}
+.brand{
+  font-weight:800; letter-spacing:.2px;
+  text-decoration:none; color:inherit;
+}
+
+/* checkbox (toggle) invisibile ma nel DOM */
+#nav-toggle{
+  position:absolute; opacity:0; pointer-events:none;
+}
+
+/* bottone hamburger */
+.hamburger{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:36px; border-radius:10px; cursor:pointer; user-select:none;
+  color:var(--brand);
+}
+.hamburger:focus-visible{ outline:3px solid rgba(47,110,252,.35); outline-offset:2px; }
+.hamburger span{
+  display:block; width:22px; height:2px; background:currentColor;
+  margin:4px 0; border-radius:2px; transition:transform .25s ease, opacity .2s ease;
+}
+
+/* animazione hamburger -> X */
+#nav-toggle:checked + .hamburger span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+#nav-toggle:checked + .hamburger span:nth-child(2){ opacity:0; }
+#nav-toggle:checked + .hamburger span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+/* pannello menu (mobile) chiuso di default */
 .menu{
-  position: absolute; right: 12px; top: 60px;
-  display: none; flex-direction: column; gap: .25rem;
-  background: color-mix(in oklab, var(--bg,#fff), #000 4%); /* leggero contrasto */
-  border: 1px solid color-mix(in oklab, var(--ink,#111), transparent 90%);
-  border-radius: 12px; padding: .45rem; min-width: 180px;
-  box-shadow: var(--shadow, 0 10px 24px rgba(0,0,0,.12));
-  transform: translateY(-6px) scale(.98);
-  opacity: 0; visibility: hidden;
-  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  position:absolute; right:12px; top:60px;
+  display:none; flex-direction:column; gap:.25rem;
+  background:color-mix(in oklab, var(--bg,#fff), #000 4%);
+  border:1px solid color-mix(in oklab, var(--ink,#111), transparent 90%);
+  border-radius:12px; padding:.45rem; min-width:180px;
+  box-shadow:var(--shadow);
+  transform:translateY(-6px) scale(.98);
+  opacity:0; visibility:hidden;
+  transition:opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
 }
 @media (prefers-color-scheme: dark){
   .menu{
-    background: color-mix(in oklab, var(--bg,#0f0f0f), #fff 4%);
-    border-color: color-mix(in oklab, var(--ink,#ececec), transparent 88%);
+    background:color-mix(in oklab, var(--bg,#0f0f0f), #fff 4%);
+    border-color:color-mix(in oklab, var(--ink,#ececec), transparent 88%);
   }
 }
 
-/* Apertura: (ordine DOM: input → label → nav) */
+/* apertura (ordine DOM: input → label → nav) */
 #nav-toggle:checked + .hamburger + .menu{
-  display: flex;
-  opacity: 1; visibility: visible;
-  transform: translateY(0) scale(1);
-  transition: opacity .2s ease, transform .2s ease;
+  display:flex;
+  opacity:1; visibility:visible;
+  transform:translateY(0) scale(1);
+  transition:opacity .2s ease, transform .2s ease;
 }
 
-/* Voci di menu */
+/* voci di menu */
 .menu a{
-  color: var(--ink, #111); text-decoration: none; font-weight: 700;
-  padding: .65rem .85rem; border-radius: 8px;
+  color:var(--ink); text-decoration:none; font-weight:700;
+  padding:.65rem .85rem; border-radius:8px;
 }
 .menu a:hover, .menu a:focus-visible{
-  background: color-mix(in oklab, var(--brand,#2f6efc), transparent 88%);
-  outline: none;
+  background:color-mix(in oklab, var(--brand,#2f6efc), transparent 88%);
+  outline:none;
 }
 
-/* Evidenziazione pagina corrente (opzionale) */
-.menu a[aria-current="page"]{ text-decoration: underline; text-underline-offset: 6px; }
+/* evidenziazione pagina corrente (opzionale) */
+.menu a[aria-current="page"]{ text-decoration:underline; text-underline-offset:6px; }
 
-/* --- Desktop: link inline, niente hamburger --- */
-@media (min-width: 900px){
-  .hamburger{ display: none; }
+/* desktop: link inline, niente hamburger */
+@media (min-width:900px){
+  .hamburger{ display:none; }
   .menu{
-    position: static; display: flex; flex-direction: row; gap: 1.1rem;
-    background: transparent; border: 0; box-shadow: none; padding: 0; min-width: 0;
-    transform: none; opacity: 1; visibility: visible;
+    position:static; display:flex; flex-direction:row; gap:1.1rem;
+    background:transparent; border:0; box-shadow:none; padding:0; min-width:0;
+    transform:none; opacity:1; visibility:visible;
   }
-  .menu a{ padding: 0; border-radius: 0; color: var(--brand, #2f6efc); }
+  .menu a{ padding:0; border-radius:0; color:var(--brand); }
 }
 
-/* --- Accessibilità globale utili --- */
-a:focus-visible{ outline: 3px solid #9fc1ff; outline-offset: 2px; }
+/* riduzione animazioni se preferita */
 @media (prefers-reduced-motion: reduce){
-  .menu, .hamburger span{ transition: none; }
+  .menu, .hamburger span{ transition:none; }
 }
 
 /* ===========================
@@ -173,8 +217,6 @@ a:focus-visible{ outline: 3px solid #9fc1ff; outline-offset: 2px; }
 .footer-flex{ display:flex; justify-content:space-between; align-items:center; gap:1rem; }
 
 /* ===========================
-   ACCESSIBILITÀ
+   ACCESSIBILITÀ GENERALE
    =========================== */
-.btn:focus,
-
-}
+a:focus-visible{ outline:3px solid #9fc1ff; outline-offset:2px; }
