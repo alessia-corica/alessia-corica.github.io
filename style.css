@@ -1,4 +1,74 @@
-/* =========================== THEME & BASE =========================== */ :root{ --bg:#ffffff; --ink:#111111; --muted:#5f6370; --line:#e6e8ee; --brand:#2f6efc; --brand-ink:#12338f; --card:#ffffff; --shadow:0 10px 24px rgba(0,0,0,.08); } @media (prefers-color-scheme: dark){ :root{ --bg:#0f0f0f; --ink:#ececec; --muted:#a9b0bf; --line:#262a33; --brand:#6aa0ff; --brand-ink:#cfdcff; --card:#1b1d22; --shadow:0 12px 28px rgba(0,0,0,.35); } } *{ box-sizing:border-box; } html,body{ margin:0; padding:0; } body{ background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; } a{ color:var(--brand); } a:hover{ text-decoration:underline; text-underline-offset:3px; } .container{ width:min(980px,92%); margin:0 auto; } .section{ padding:2.4rem 0; } .lead{ color:var(--muted); } /* =========================== BUTTONS =========================== */ .btn{ display:inline-block; padding:.7rem 1.1rem; border-radius:10px; font-weight:700; text-decoration:none; border:0; cursor:pointer; background:var(--brand); color:#fff; transition:filter .2s ease, transform .02s ease; } .btn:hover{ filter:brightness(.95); } .btn:active{ transform:translateY(1px); } .btn.secondary{ background:#eef3ff; color:var(--brand-ink); } @media (prefers-color-scheme: dark){ .btn.secondary{ background:#2a2f3a; color:var(--brand); } } /* =========================== NAVBAR (hamburger senza JS) =========================== */ .site-header{ position:sticky; top:0; z-index:100; background:var(--bg); border-bottom:1px solid var(--line); backdrop-filter:saturate(180%) blur(8px); } .nav{ display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; } .brand{ font-weight:800; letter-spacing:.2px; text-decoration:none; color:inherit; } /* Menu desktop */ .menu{ display:flex; gap:1.1rem; } .menu a{ text-decoration:none; font-weight:700; color:var(--brand); } .menu a:hover{ text-decoration:underline; text-underline-offset:5px; } /* Toggle invisibile + icona hamburger */ .nav-toggle{ display:none; } /* <input type="checkbox"> nascosto */ .hamburger{ display:none; /* visibile solo su mobile */ width:40px; height:36px; border-radius:10px; align-items:center; justify-content:center; cursor:pointer; color:var(--brand); } .hamburger span{ display:block; width:22px; height:2px; background:currentColor; margin:4px 0; border-radius:2px; } /* MOBILE */ @media (max-width:720px){ .hamburger{ display:inline-flex; } /* Menu chiuso di default su mobile */ .menu{ position:absolute; right:12px; top:60px; display:none; flex-direction:column; gap:.2rem; background:rgba(0,0,0,.04); border:1px solid rgba(0,0,0,.1); border-radius:12px; padding:.45rem; min-width:170px; box-shadow:var(--shadow); } @media (prefers-color-scheme: dark){ .menu{ background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.12); } } .menu a{ padding:.6rem .8rem; border-radius:8px; color:inherit; font-weight:600; } .menu a:hover{ background:rgba(47,110,252,.12); text-decoration:none; } /* Apertura menu quando il toggle è attivo (ordine DOM: toggle → label → nav.menu) */ .nav-toggle:checked ~ .menu{ display:flex; } } /* Evidenziazione pagina corrente (opzionale) */ nav a[aria-current="page"]{ text-decoration:underline; text-underline-offset:6px; } /* =========================== HERO (home minimale) =========================== */ .hero{ padding:4.5rem 0 2.4rem; text-align:center; } .hero h1{ font-size:clamp(2rem,4.2vw,3rem); margin:.2rem 0 .5rem; } .cta{ margin-top:1rem; display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap; } .avatar{ width:120px; height:120px; border-radius:50%; object-fit:cover; display:block; margin:0 auto 1rem; box-shadow:var(--shadow); } /* =========================== CARDS & GRIDS (Projects / Contacts) =========================== */ .cards, .projects-grid, .contact-grid{ display:grid; gap:1.1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); } .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.1rem; box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease; } .card:hover{ transform:translateY(-3px); box-shadow:0 16px 30px rgba(0,0,0,.12); } .card h3{ margin:.1rem 0 .4rem; } .card p{ color:var(--muted); margin:0 0 .6rem; } .actions{ display:flex; gap:.5rem; flex-wrap:wrap; } /* Contatti: solo bottoni */ .contact-grid .card{ text-align:center; padding:1.6rem 1.1rem; } .contact-grid .btn{ min-width:180px; } /* =========================== FOOTER =========================== */ .site-footer{ border-top:1px solid var(--line); padding:1rem 0; margin-top:2rem; color:var(--muted); font-size:.95rem; } .footer-flex{ display:flex; justify-content:space-between; align-items:center; gap:1rem; } /* =========================== ACCESSIBILITÀ =========================== */ .btn:focus, /* ==== NAVBAR (sempre hamburger, senza JS) ==== */ .site-header{ position: sticky; top: 0; z-index: 100; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #e6e8ee); backdrop-filter: saturate(180%) blur(8px); } .nav{ display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; } .brand{ font-weight: 800; letter-spacing: .2px; text-decoration: none; color: inherit; } /* Toggle + hamburger */ .nav-toggle{ position: absolute; opacity: 0; pointer-events: none; } /* invisibile */ .hamburger{ display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 36px; border-radius: 10px; cursor: pointer; color: var(--brand, #2f6efc); } .hamburger span{ display: block; width: 22px; height: 2px; background: currentColor; margin: 4px 0; border-radius: 2px; } /* Menu: chiuso di default */ .menu{ position: absolute; right: 12px; top: 60px; display: none; flex-direction: column; gap: .2rem; background: rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.1); border-radius: 12px; padding: .45rem; min-width: 170px; box-shadow: 0 10px 24px rgba(0,0,0,.12); } .menu a{ color: inherit; text-decoration: none; font-weight: 700; padding: .6rem .8rem; border-radius: 8px; } .menu a:hover{ background: rgba(47,110,252,.12); text-decoration: none; } /* Apertura menu: ADIACENTE (checkbox + label + nav) */ #nav-toggle:checked + .hamburger + .menu{ display: flex; } /* Opzionale: su schermi larghi puoi mostrare i link inline invece dell'hamburger. Se vuoi questa modalità, de-comenta il blocco sotto e RIMUOVI 'display:inline-flex' all'hamburger. */ /* @media (min-width: 900px){ .hamburger{ display: none; } .menu{ position: static; display: flex; flex-direction: row; gap: 1.1rem; background: transparent; border: 0; box-shadow: none; padding: 0; min-width: 0; } .menu a{ padding: 0; border-radius: 0; color: var(--brand, #2f6efc); } #nav-toggle:checked + .hamburger + .menu{ display: flex; } } */ .menu a:focus, a:focus{ outline:3px solid #9fc1ff; outline-offset:2px; }
-   ACCESSIBILITÀ GENERALE
+/* ===========================
+   NAVBAR — finale (stile invariato)
    =========================== */
-a:focus-visible{ outline:3px solid #9fc1ff; outline-offset:2px; }
+
+/* la nav fa da riferimento per il menu assoluto */
+.container.nav{ position:relative; }
+
+/* barra */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:saturate(180%) blur(8px);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.8rem 0;
+}
+.brand{
+  font-weight:800; letter-spacing:.2px;
+  text-decoration:none; color:inherit;
+}
+
+/* --- DESKTOP di default --- */
+.hamburger{ display:none; }                 /* niente hamburger su desktop */
+.menu{ display:flex; gap:1.1rem; }          /* link inline come prima */
+.menu a{ text-decoration:none; font-weight:700; color:var(--brand); }
+.menu a:hover{ text-decoration:underline; text-underline-offset:5px; }
+
+/* --- MOBILE --- */
+@media (max-width:720px){
+  /* checkbox: usa l'ID che hai in HTML (#nav-toggle) */
+  #nav-toggle{ position:absolute; opacity:0; pointer-events:none; }
+
+  .hamburger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:40px; height:36px; border-radius:10px; cursor:pointer;
+    color:var(--brand);
+  }
+  .hamburger span{
+    display:block; width:22px; height:2px; background:currentColor;
+    margin:4px 0; border-radius:2px;
+    transition:transform .25s ease, opacity .2s ease;
+  }
+
+  /* pannello a tendina: chiuso di default, non altera il layout */
+  .menu{
+    position:absolute; right:12px; top:60px;
+    display:none; flex-direction:column; gap:.2rem;
+    background:rgba(0,0,0,.04);
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:12px; padding:.45rem; min-width:170px;
+    box-shadow:var(--shadow);
+  }
+  @media (prefers-color-scheme: dark){
+    .menu{ background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.12); }
+  }
+  .menu a{ padding:.6rem .8rem; border-radius:8px; color:inherit; font-weight:600; }
+  .menu a:hover{ background:rgba(47,110,252,.12); text-decoration:none; }
+
+  /* apertura: ordine DOM = #nav-toggle → .hamburger → .menu */
+  #nav-toggle:checked + .hamburger + .menu{ display:flex; }
+
+  /* (opzionale) animazione hamburger → X */
+  #nav-toggle:checked + .hamburger span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+  #nav-toggle:checked + .hamburger span:nth-child(2){ opacity:0; }
+  #nav-toggle:checked + .hamburger span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+}
+
+/* Evidenziazione pagina corrente (opzionale) */
+nav a[aria-current="page"]{ text-decoration:underline; text-underline-offset:6px; }
+
+/* Accessibilità */
+.menu a:focus, a:focus{ outline:3px solid #9fc1ff; outline-offset:2px; }
