@@ -4,111 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alessia Corica — Bioinformatics</title>
-  <meta name="description" content="Alessia Corica — Bioinformatics MSc. Genomics, HMMs, data analysis." />
+  <meta name="description" content="Alessia Corica — Bioinformatics MSc at the University of Bologna. Genomics, HMMs, and data analysis." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/favicon.png" />
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Alessia Corica</a>
 
-  <!-- Typography: system font (rapid, professionale) -->
-  <style>
-    :root{
-      --ink:#111; --muted:#555; --line:#e6e6e6; --brand:#0a66c2;
-      --bg:#fff;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{ --ink:#eee; --muted:#b5b5b5; --line:#2a2a2a; --bg:#0f0f0f; --brand:#69a7ff; }
-    }
-    html,body{ margin:0; background:var(--bg); color:var(--ink);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
-      line-height:1.6;
-    }
-    .container{ width: min(960px, 92%); margin: 0 auto; }
-    /* Header */
-    .site-header{ border-bottom:1px solid var(--line); }
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-    .brand{ font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--ink); }
-    .nav a{ text-decoration:none; color:var(--brand); margin-left:18px; font-weight:600; }
-    .nav a:hover{ text-decoration:underline; text-underline-offset:3px; }
+      <!-- Toggle (no JS) -->
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
+      <label for="nav-toggle" class="hamburger" aria-hidden="true"><span></span><span></span><span></span></label>
 
-    /* Hero */
-    .hero{ padding:56px 0 32px; }
-    .hero h1{ font-size: clamp(28px, 4vw, 40px); margin:0 0 10px; letter-spacing:.2px; }
-    .hero p{ color:var(--muted); margin:0; max-width:72ch; }
+      <!-- Menu -->
+      <nav class="menu">
+        <a href="CV.html">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contacts.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    .cta{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn{ display:inline-block; padding:10px 14px; border-radius:8px; font-weight:700; text-decoration:none; }
-    .btn.primary{ background:var(--brand); color:#fff; }
-    .btn.secondary{ border:1px solid var(--line); color:var(--ink); }
-    .btn:hover{ opacity:.92; }
-
-    /* Sections */
-    section{ padding:28px 0; border-top:1px solid var(--line); }
-    h2{ font-size:22px; margin:0 0 10px; }
-    .para{ max-width:78ch; margin:0; color:var(--ink); }
-    .muted{ color:var(--muted); }
-
-    /* Cards (featured projects) */
-    .grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
-    .card{ border:1px solid var(--line); border-radius:10px; padding:14px; }
-    .card h3{ margin:0 0 6px; font-size:18px; }
-    .actions{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
-
-    /* Badges */
-    .badges{ list-style:none; padding:0; margin:8px 0 0; display:flex; gap:8px; flex-wrap:wrap; }
-    .badges li{ border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-weight:600; font-size:14px; }
-
-    /* Footer */
-    .site-footer{ border-top:1px solid var(--line); padding:16px 0; margin-top:28px; color:var(--muted); font-size:14px; }
-  </style>
-  
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">Alessia Corica</a>
-
-    <!-- Toggle (checkbox hack, niente JS) -->
-    <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Open menu">
-    <label for="nav-toggle" class="hamburger" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </label>
-
-    <!-- Menu -->
-    <nav class="menu">
-      <a href="CV.html">CV</a>
-      <a href="projects.html">Projects</a>
-      <a href="contacts.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-
-  <!-- Hero -->
+  <!-- HERO (solo contenuti essenziali) -->
   <section class="hero">
     <div class="container">
+      <!-- Se vuoi, aggiungi un avatar: <img class="avatar" src="assets/profile.jpg" alt="Alessia Corica"> -->
       <h1>Bioinformatics MSc student</h1>
-      <p class="para muted">
-        University of Bologna. Interests: genomics, profile HMMs, sequence/structure alignment, and reproducible data analysis in Python/R.
+      <p class="lead">
+        University of Bologna. Interests: genomics, profile HMMs, sequence/structure alignment,
+        and reproducible data analysis in Python/R.
       </p>
       <div class="cta">
-        <a class="btn primary" href="CV.html">View CV</a>
+        <a class="btn" href="CV.html">View CV</a>
         <a class="btn secondary" href="projects.html">See Projects</a>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section>
-    <div class="container">
-      <h2>About</h2>
-      <p class="para">
-        I work on methods that bridge molecular biology and computation. Recent work includes building
-        <strong>profile HMMs</strong> for protein domains and designing clear, reproducible pipelines
-        (Python, R, Bash). I care about clean analyses and communicating results effectively.
-      </p>
-    </div>
-  </section>
-
-
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="container">
-      © 2025 Alessia Corica · <a href="contacts.html" style="color:inherit;text-decoration:underline;">Contact</a>
+    <div class="container footer-flex">
+      <p>© 2025 Alessia Corica</p>
+      <p class="muted"><a href="contacts.html">Contact</a></p>
     </div>
   </footer>
 </body>
